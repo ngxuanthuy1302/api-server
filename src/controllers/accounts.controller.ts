@@ -189,7 +189,7 @@ export class AccountsController {
       where: {email: account?.email, password: account?.password},
     });
     if (user) {
-      return 'ajdhhjsevfvdsgfvsd';
+      return user.id;
     }
   }
 }
