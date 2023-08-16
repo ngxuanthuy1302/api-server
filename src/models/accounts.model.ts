@@ -25,14 +25,18 @@ export class Accounts extends Entity {
   @property({
     type: 'string',
     required: true,
-    id: true,
+    index: {
+      unique: true,
+    },
   })
   email: string;
 
   @property({
     type: 'string',
     required: true,
-    id: true,
+    index: {
+      unique: true,
+    },
   })
   phoneNumber: string;
 

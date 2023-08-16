@@ -7,6 +7,7 @@ import {
   repository,
 } from '@loopback/repository';
 import {
+  HttpErrors,
   SchemaObject,
   del,
   get,
@@ -73,7 +74,7 @@ export class AccountsController {
       },
     });
     if (user) {
-      return 'Tài khoản đã tồn tại';
+      throw new HttpErrors.Conflict('Email or Phone number already exists');
     }
     return this.accountsRepository.create(accounts);
   }
