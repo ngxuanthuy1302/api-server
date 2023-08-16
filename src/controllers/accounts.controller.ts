@@ -66,7 +66,15 @@ export class AccountsController {
       },
     })
     accounts: Omit<Accounts, 'id'>,
-  ): Promise<Accounts> {
+  ): Promise<any> {
+    const user = await this.accountsRepository.findOne({
+      where: {
+        or: [{email: accounts?.email}, {phoneNumber: accounts?.phoneNumber}],
+      },
+    });
+    if (user) {
+      return 'Tài khoản đã tồn tại';
+    }
     return this.accountsRepository.create(accounts);
   }
 
